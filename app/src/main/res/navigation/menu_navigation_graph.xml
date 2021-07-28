@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_navigation_graph"
+    app:startDestination="@id/menuContainerFragment">
+
+    <fragment
+        android:id="@+id/menuContainerFragment"
+        android:name="com.oisab.instaclone.screens.MenuContainerFragment"
+        android:label="MenuContainerFragment" >
+        <action
+            android:id="@+id/action_menuContainerFragment_to_news_feed_navigation_grph"
+            app:destination="@id/news_feed_navigation_grph" />
+        <action
+            android:id="@+id/action_menuContainerFragment_to_suggestions_navigation_graph"
+            app:destination="@id/suggestions_navigation_graph" />
+        <action
+            android:id="@+id/action_menuContainerFragment_to_new_post_navigation_graph"
+            app:destination="@id/new_post_navigation_graph" />
+        <action
+            android:id="@+id/action_menuContainerFragment_to_notifications_navigation_graph"
+            app:destination="@id/notifications_navigation_graph" />
+        <action
+            android:id="@+id/action_menuContainerFragment_to_account_navigation_graph"
+            app:destination="@id/account_navigation_graph" />
+    </fragment>
+    <include app:graph="@navigation/account_navigation_graph" />
+    <include app:graph="@navigation/new_post_navigation_graph" />
+    <include app:graph="@navigation/news_feed_navigation_grph" />
+    <include app:graph="@navigation/notifications_navigation_graph" />
+    <include app:graph="@navigation/suggestions_navigation_graph" />
+</navigation>
