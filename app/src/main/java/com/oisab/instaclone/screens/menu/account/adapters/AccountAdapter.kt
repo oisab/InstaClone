@@ -11,6 +11,7 @@ import com.oisab.instaclone.R
 import com.oisab.instaclone.screens.menu.account.cells.BaseAccountCell
 import com.oisab.instaclone.screens.menu.account.cells.CellAccountInfo
 import com.oisab.instaclone.screens.menu.account.cells.CellAccountPostsList
+import de.hdodenhof.circleimageview.CircleImageView
 import java.lang.IllegalArgumentException
 
 class AccountAdapter : RecyclerView.Adapter<AccountAdapter.BaseAccountViewHolder<*>>() {
@@ -61,7 +62,7 @@ class AccountAdapter : RecyclerView.Adapter<AccountAdapter.BaseAccountViewHolder
 
     class AccountInfoViewHolder(itemView: View) : BaseAccountViewHolder<CellAccountInfo>(itemView) {
         override fun bind(item: CellAccountInfo) {
-            val accountIcon: AppCompatImageView = itemView.findViewById(R.id.accountIcon)
+            val accountIcon: CircleImageView = itemView.findViewById(R.id.accountIcon)
             val postsQuantity: AppCompatTextView = itemView.findViewById(R.id.postsQuantity)
             val followersQuantity: AppCompatTextView = itemView.findViewById(R.id.followersQuantity)
             val followsQuantity: AppCompatTextView = itemView.findViewById(R.id.followsQuantity)
@@ -80,7 +81,7 @@ class AccountAdapter : RecyclerView.Adapter<AccountAdapter.BaseAccountViewHolder
 
             accountPostsRecyclerView.adapter = accountPostsAdapter
             accountPostsRecyclerView.layoutManager = GridLayoutManager(itemView.context, 3)
-            accountPostsAdapter.setData(item.accountPosts)
+            accountPostsAdapter.setData(item.accountPostsList)
         }
     }
 }

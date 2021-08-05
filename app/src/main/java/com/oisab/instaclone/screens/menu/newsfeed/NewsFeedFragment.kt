@@ -7,10 +7,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.oisab.instaclone.R
-import com.oisab.instaclone.screens.menu.newsfeed.posts.PostsAdapter
+import com.oisab.instaclone.screens.menu.newsfeed.posts.CellNewsFeedPost
+import com.oisab.instaclone.screens.menu.newsfeed.posts.NewsPostsAdapter
 
-class NewsFeedFragment: Fragment(R.layout.fragment_news_feed) {
-    private val postAdapter = PostsAdapter()
+class NewsFeedFragment: Fragment(R.layout.fragment_news_feed), NewsPostsAdapter.OnItemClickListener {
+    private val postAdapter = NewsPostsAdapter(this)
     private lateinit var newsFeedViewModel: NewsFeedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,12 +26,16 @@ class NewsFeedFragment: Fragment(R.layout.fragment_news_feed) {
         postsRecyclerView.adapter = postAdapter
         postsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-
         newsFeedViewModel.generateStories()
         newsFeedViewModel.generatePosts()
 
         newsFeedViewModel.posts.observe(viewLifecycleOwner, {
             postAdapter.setData(it)
         })
+    }
+
+    override fun onItemClick(position: Int) {
+        val clickedItem = newsFeedViewModel.posts.value?.get(position) as CellNewsFeedPost
+        clickedItem.isLiked = true
     }
 }

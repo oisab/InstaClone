@@ -7,6 +7,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.oisab.instaclone.R
+import de.hdodenhof.circleimageview.CircleImageView
 
 class NotificationsAdapter: RecyclerView.Adapter<NotificationsAdapter.NotificationViewHolder>() {
     private val notificationItems: MutableList<CellNotification> = ArrayList()
@@ -30,7 +31,7 @@ class NotificationsAdapter: RecyclerView.Adapter<NotificationsAdapter.Notificati
 
     class NotificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: CellNotification) {
-            val notificationImage: AppCompatImageView = itemView.findViewById(R.id.notificationImage)
+            val notificationImage: CircleImageView = itemView.findViewById(R.id.notificationImage)
             val notificationText: AppCompatTextView = itemView.findViewById(R.id.notificationText)
 
             notificationImage.setImageResource(item.notificationImage)

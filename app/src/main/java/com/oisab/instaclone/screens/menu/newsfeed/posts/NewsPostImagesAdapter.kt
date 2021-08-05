@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.oisab.instaclone.R
 
-class PostImagesAdapter : RecyclerView.Adapter<PostImagesAdapter.PostImageViewHolder>() {
+class NewsPostImagesAdapter : RecyclerView.Adapter<NewsPostImagesAdapter.PostImageViewHolder>() {
     private val postImages: MutableList<Int> = ArrayList()
 
     fun setData(newPostImages: MutableList<Int>) {
@@ -29,7 +29,7 @@ class PostImagesAdapter : RecyclerView.Adapter<PostImagesAdapter.PostImageViewHo
 
     class PostImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(cellPostImage: Int) {
-            val postImage = itemView.findViewById<AppCompatImageView>(R.id.newsPostImage)
+            val postImage: AppCompatImageView = itemView.findViewById(R.id.newsPostImage)
             postImage.setImageResource(cellPostImage)
         }
     }

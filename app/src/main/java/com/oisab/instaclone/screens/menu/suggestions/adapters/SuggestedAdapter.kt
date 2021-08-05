@@ -1,12 +1,14 @@
-package com.oisab.instaclone.screens.menu.suggestions
+package com.oisab.instaclone.screens.menu.suggestions.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.oisab.instaclone.R
+import com.oisab.instaclone.screens.menu.suggestions.cells.CellSuggestedSearchView
+import com.oisab.instaclone.screens.menu.suggestions.cells.BaseSuggestedCell
+import com.oisab.instaclone.screens.menu.suggestions.cells.CellSuggestedPostsList
 import java.lang.IllegalArgumentException
 
 class SuggestedAdapter : RecyclerView.Adapter<SuggestedAdapter.BaseSuggestedViewHolder<*>>(){
@@ -17,26 +19,26 @@ class SuggestedAdapter : RecyclerView.Adapter<SuggestedAdapter.BaseSuggestedView
         const val POSTS = 2
     }
 
-    fun setData(newSuggestedCell: MutableList<BaseSuggestedCell>) {
+    fun setData(newSuggestedItems: MutableList<BaseSuggestedCell>) {
         suggestedItems.clear()
-        suggestedItems.addAll(newSuggestedCell)
+        suggestedItems.addAll(newSuggestedItems)
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup, viewType: Int): BaseSuggestedViewHolder<*> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseSuggestedViewHolder<*> {
         val inflater = LayoutInflater.from(parent.context)
         return when(viewType) {
             SEARCH -> SearchViewViewHolder(inflater.inflate(R.layout.cell_suggested_search, parent, false))
-            POSTS -> SuggestedPostsListViewHolder(inflater.inflate(R.layout.cell_suggested_search, parent, false))
+            POSTS -> SuggestedPostsListViewHolder(inflater.inflate(R.layout.cell_suggested_posts_list, parent, false))
             else -> throw IllegalArgumentException("Error creating viewHolder. Invalid viewHolder type")
         }
     }
 
     override fun onBindViewHolder(holder: BaseSuggestedViewHolder<*>, position: Int) {
+        val element = suggestedItems[position]
         when(holder) {
-            is SearchViewViewHolder -> holder.bind(suggestedItems[position] as CellSuggestedSearchView)
-            is SuggestedPostsListViewHolder -> holder.bind(suggestedItems[position] as CellSuggestedPostsList)
+            is SearchViewViewHolder -> holder.bind(element as CellSuggestedSearchView)
+            is SuggestedPostsListViewHolder -> holder.bind(element as CellSuggestedPostsList)
             else -> throw IllegalArgumentException("Error binding viewHolder. Invalid viewHolder type")
         }
     }
@@ -64,12 +66,12 @@ class SuggestedAdapter : RecyclerView.Adapter<SuggestedAdapter.BaseSuggestedView
 
     class SuggestedPostsListViewHolder(itemView: View) : BaseSuggestedViewHolder<CellSuggestedPostsList>(itemView) {
         override fun bind(item: CellSuggestedPostsList) {
-            val suggestedListAdapter = SuggestedPostsListAdapter()
-            val suggestedPostsRecyclerView : RecyclerView = itemView.findViewById(R.id.suggestedPostsRecyclerView)
+            val suggestedPostsRecyclerView: RecyclerView = itemView.findViewById(R.id.suggestedPostsRecyclerView)
+            val suggestedPostsAdapter = SuggestedPostsListAdapter()
 
-            suggestedPostsRecyclerView.adapter = suggestedListAdapter
-            suggestedPostsRecyclerView.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS)
-            suggestedListAdapter.setData(item.suggestedPostsList)
+            suggestedPostsRecyclerView.adapter = suggestedPostsAdapter
+            suggestedPostsRecyclerView.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+            suggestedPostsAdapter.setData(item.suggestedPostsList)
         }
     }
 }

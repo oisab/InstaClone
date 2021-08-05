@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.oisab.instaclone.R
+import com.oisab.instaclone.screens.menu.suggestions.adapters.SuggestedAdapter
 
 class SuggestionsFragment: Fragment(R.layout.fragment_suggestions) {
     private val suggestedAdapter = SuggestedAdapter()

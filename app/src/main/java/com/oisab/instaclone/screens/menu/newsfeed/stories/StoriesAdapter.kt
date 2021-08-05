@@ -7,6 +7,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.oisab.instaclone.R
+import de.hdodenhof.circleimageview.CircleImageView
 
 class StoriesAdapter: RecyclerView.Adapter<StoriesAdapter.StoriesViewHolder>() {
     private val storiesItemItems: MutableList<CellStoriesItem> = ArrayList()
@@ -30,7 +31,7 @@ class StoriesAdapter: RecyclerView.Adapter<StoriesAdapter.StoriesViewHolder>() {
 
     class StoriesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(cellStoriesItem: CellStoriesItem) {
-            val storiesIcon = itemView.findViewById<AppCompatImageView>(R.id.storiesIconImage)
+            val storiesIcon = itemView.findViewById<CircleImageView>(R.id.storiesIconImage)
             val userAccountId = itemView.findViewById<AppCompatTextView>(R.id.userAccountId)
 
             storiesIcon.setImageResource(cellStoriesItem.storiesIcon)

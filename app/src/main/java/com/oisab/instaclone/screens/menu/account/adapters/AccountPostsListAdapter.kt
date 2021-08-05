@@ -30,7 +30,7 @@ class AccountPostsListAdapter: RecyclerView.Adapter<AccountPostsListAdapter.Acco
 
     class AccountPostViewHolder(itemView: View) : AccountAdapter.BaseAccountViewHolder<CellAccountPost>(itemView) {
         override fun bind(item: CellAccountPost) {
-            val postImage: AppCompatImageView = itemView.findViewById(R.id.accountPostItem)
+            val postImage: AppCompatImageView = itemView.findViewById(R.id.accountPostImage)
             postImage.setImageResource(item.postImages)
         }
     }

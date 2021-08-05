@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/storiesIconImage"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="@drawable/circle" />
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/black"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/userAccountId"

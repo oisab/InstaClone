@@ -24,13 +24,6 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val spanPostsQuantity = SpannableString("123")
-        val spanFollowersQuantity = SpannableString("123")
-        val spanFollowsQuantity = SpannableString("123")
-        spanPostsQuantity.setSpan(RelativeSizeSpan(1.5f), 0,spanPostsQuantity.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spanFollowersQuantity.setSpan(RelativeSizeSpan(1.5f), 0,spanFollowersQuantity.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spanFollowsQuantity.setSpan(RelativeSizeSpan(1.5f), 0,spanFollowsQuantity.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
         val accountRecyclerView : RecyclerView= view.findViewById(R.id.accountRecyclerView)
         accountRecyclerView.adapter = accountAdapter
         accountRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -39,5 +32,12 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
         accountViewModel.accountData.observe(viewLifecycleOwner, {
             accountAdapter.setData(it)
         })
+
+        val spanPostsQuantity = SpannableString("123")
+        val spanFollowersQuantity = SpannableString("123")
+        val spanFollowsQuantity = SpannableString("123")
+        spanPostsQuantity.setSpan(RelativeSizeSpan(1.5f), 0,spanPostsQuantity.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spanFollowersQuantity.setSpan(RelativeSizeSpan(1.5f), 0,spanFollowersQuantity.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spanFollowsQuantity.setSpan(RelativeSizeSpan(1.5f), 0,spanFollowsQuantity.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
     }
 }

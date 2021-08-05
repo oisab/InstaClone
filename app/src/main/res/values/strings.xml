@@ -17,9 +17,10 @@
     <string name="city">City</string>
     <string name="e_mail">E-mail</string>
     <string name="save">Save</string>
-    <string name="posts">Posts \n</string>
+    <string name="posts">Posts\n</string>
     <string name="follows">Follows\n</string>
     <string name="followers">Followers\n</string>
-    <string name="settings">Settings</string>
+    <string name="edit_profile">Edit profile</string>
     <string name="confirm">Confirm</string>
+    <string name="likes">Likes: </string>
 </resources>
