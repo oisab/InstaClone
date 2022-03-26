@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/accountIcon"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/accountTextField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/settingsButton"
+            app:layout_constraintStart_toStartOf="@+id/accountIcon"
+            app:layout_constraintTop_toBottomOf="@+id/accountIcon" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/postsQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:text="@string/posts"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/accountTextField"
+            app:layout_constraintEnd_toStartOf="@id/followersQuantity"
+            app:layout_constraintStart_toEndOf="@id/accountIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/followersQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:text="@string/followers"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/accountTextField"
+            app:layout_constraintEnd_toStartOf="@id/followsQuantity"
+            app:layout_constraintStart_toEndOf="@+id/postsQuantity"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/followsQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:text="@string/follows"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/accountTextField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/followersQuantity"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/settingsButton"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@color/purple_200"
+            android:text="@string/edit_profile"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accountTextField" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
